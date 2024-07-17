@@ -1,12 +1,13 @@
 import java.awt.GridLayout;
+import java.awt.Frame;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class TextareaEditor extends JFrame {
+public class TextareaEditor {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("My Textarea");
+        Frame frame = new Frame("My Textarea");
         JTextArea textarea = new JTextArea();
 
         frame.setSize(500, 500);
