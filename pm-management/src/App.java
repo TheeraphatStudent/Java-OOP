@@ -1,10 +1,15 @@
-import pages.Page;
+import javax.swing.SwingUtilities;
+
+import pages.EntryPage;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Page getStart = new Page();
-
-        getStart.showFrame();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new EntryPage().setVisible(true);
+            }
+        });
 
     }
 }
