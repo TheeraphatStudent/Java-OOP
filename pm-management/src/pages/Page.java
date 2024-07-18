@@ -1,37 +1,61 @@
 package pages;
 
-import java.awt.Color;
+// Awt
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 
+// Img
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
+
+// Swing
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+// Component
 import components.Dashboard;
 import components.Statistic;
 import components.Footer;
 
-public class Page {
-    JFrame frame = new JFrame("PM2.5 Reporter");
+// Resource
+import resource.colors.MainColor;
+import resource.environment.WindowClosingFrameEvent;
+import resource.environment.WindowEntryScreen;
+
+public class Page extends JFrame {
     JPanel panel = new JPanel(new GridLayout(1, 2, 20, 20));
 
-    Color primary_color = new Color(248, 237, 227, 70).darker();
-
     Dashboard dashboard = new Dashboard();
-    Footer footer = new Footer(primary_color);
+    Footer footer = new Footer(MainColor.primary());
     Statistic statistic = new Statistic();
 
-    public void showFrame() {
-        frame.setSize(500, 500);
-        frame.setLayout(new GridBagLayout());
+    public Page() {
+        setTitle("PM 2.5 Reporter");
+
+        try (InputStream is = Page.class.getClassLoader().getResourceAsStream("resource/images/icon.png")) {
+            if (is == null) {
+                System.out.println("Image not found");
+            } else {
+                BufferedImage iconImage = ImageIO.read(is);
+                setIconImage(iconImage);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        setSize(new WindowEntryScreen().getWidth(), new WindowEntryScreen().getHeight());
+        // setLocation(new WindowEntryScreen().getWidthCenter(), new WindowEntryScreen().getHeightCenter());
+        setLayout(new GridBagLayout());
         GridBagConstraints gridConst = new GridBagConstraints();
 
-        frame.getContentPane().setBackground(primary_color);
+        getContentPane().setBackground(MainColor.primary());
 
         // Panel Content
-        panel.setBackground(primary_color);
+        panel.setBackground(MainColor.primary());
         panel.add(dashboard.getDashboard());
         panel.add(statistic.getStatistic());
 
@@ -42,7 +66,7 @@ public class Page {
         gridConst.weighty = 0.7;
         gridConst.fill = GridBagConstraints.BOTH;
         gridConst.insets = new Insets(20, 20, 20, 20);
-        frame.add(panel, gridConst);
+        add(panel, gridConst);
 
         gridConst.gridx = 0;
         gridConst.gridy = 1;
@@ -50,9 +74,12 @@ public class Page {
         gridConst.weighty = 0.3;
         gridConst.fill = GridBagConstraints.BOTH;
         gridConst.insets = new Insets(0, 20, 20, 20);
-        frame.add(footer.getFooter(), gridConst);
+        add(footer.getFooter(), gridConst);
 
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setVisible(true);
+        new WindowClosingFrameEvent(this, new EntryPage());
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // new WindowClosingFrameEvent(this, new Member());
+        // new WindowClosingFrameEvent(this);
+
     }
 }
