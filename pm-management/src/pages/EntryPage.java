@@ -43,7 +43,7 @@ public class EntryPage extends JFrame {
             dispose();
         });
 
-        JPanel panel = new JPanel(new GridLayout());
+        JPanel panel = new JPanel(new GridLayout(5,2));
         panel.add(navigateToPage);
         panel.add(navigateToMember);
 

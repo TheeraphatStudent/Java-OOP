@@ -11,5 +11,7 @@ public class App {
             }
         });
 
+        // new EntryPage().setVisible(true);
+
     }
 }
