@@ -33,7 +33,7 @@ public class Page {
         // Panel Content
         panel.setBackground(primary_color);
         panel.add(dashboard.getDashboard());
-        panel.add(statistic.getStatistic());
+        // panel.add(statistic.getStatistic());
 
         // Main Content
         gridConst.gridx = 0;
