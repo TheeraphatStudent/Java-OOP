@@ -11,17 +11,17 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Dashboard {
-    public Dashboard() {
+    // private String getFileContent = "";
+
+    // public Dashboard() {
         
 
-    }
+    // }
 
-    public Dashboard(String _getFileContent) {
-        this.getFileContent = _getFileContent;
+    // public Dashboard(String _getFileContent) {
+    //     this.getFileContent = _getFileContent;
 
-    }
-
-    private String getFileContent = "";
+    // }
 
     JPanel panel = new JPanel(new GridLayout(10, 20, 3, 3));
 
