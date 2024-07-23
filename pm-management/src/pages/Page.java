@@ -57,7 +57,7 @@ public class Page extends JFrame {
         // Panel Content
         panel.setBackground(MainColor.primary());
         panel.add(dashboard.getDashboard());
-        // panel.add(statistic.getStatistic());
+        panel.add(statistic.getStatistic());
 
         // Main Content
         gridConst.gridx = 0;

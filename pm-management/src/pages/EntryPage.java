@@ -1,5 +1,6 @@
 package pages;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.JPanel;
@@ -12,7 +13,8 @@ import resource.environment.WindowEntryScreen;
 public class EntryPage extends JFrame {
     public EntryPage() {
         setTitle("PM 2.5 Management");
-        setSize(500, 500);
+        setSize(new WindowEntryScreen().getWidth(), new WindowEntryScreen().getHeight());
+        // setSize(500, 500);
         setLayout(new GridLayout());
 
         // Location
@@ -43,9 +45,10 @@ public class EntryPage extends JFrame {
             dispose();
         });
 
-        JPanel panel = new JPanel(new GridLayout());
+        JPanel panel = new JPanel(new GridLayout(4,2));
         panel.add(navigateToPage);
         panel.add(navigateToMember);
+        panel.setBackground(Color.LIGHT_GRAY);
 
         add(panel);
 
